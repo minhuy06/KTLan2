@@ -12,13 +12,19 @@ class ChinhSuaCongViecActivity : AppCompatActivity() {
         binding = ActivityChinhSuaCongViecBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.edtTenSua.setText(intent.getStringExtra("TEN_CONG_VIEC"))
-        binding.edtMoTaSua.setText(intent.getStringExtra("MO_TA_CONG_VIEC"))
+        val congViec = intent.getParcelableExtra<CongViec>("OBJ_CONG_VIEC")
+
+        binding.edtTenSua.setText(congViec?.tenCongViec)
+        binding.edtMoTaSua.setText(congViec?.moTa)
 
         binding.btnLuu.setOnClickListener {
             val intentResult = android.content.Intent().apply {
-                putExtra("TEN_MOI", binding.edtTenSua.text.toString())
-                putExtra("MO_TA_MOI", binding.edtMoTaSua.text.toString())
+                val congViecMoi = CongViec(
+                    tenCongViec = binding.edtTenSua.text.toString(),
+                    moTa = binding.edtMoTaSua.text.toString(),
+                    trangThai = congViec?.trangThai ?: false // Giữ nguyên trạng thái
+                )
+                putExtra("OBJ_CONG_VIEC_MOI", congViecMoi)
             }
             setResult(RESULT_OK, intentResult)
             finish()

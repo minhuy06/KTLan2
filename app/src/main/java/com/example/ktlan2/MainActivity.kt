@@ -16,11 +16,14 @@ class MainActivity : AppCompatActivity() {
             val tenCV = binding.edtTenCongViec.text.toString()
             val moTaCV = binding.edtMoTaCongViec.text.toString()
 
+            val congViecMoi = CongViec(tenCV, moTaCV)
+
             val intent = android.content.Intent(this, ChiTietCongViecActivity::class.java).apply {
-                putExtra("TEN_CONG_VIEC", tenCV)
-                putExtra("MO_TA_CONG_VIEC", moTaCV)
+                putExtra("OBJ_CONG_VIEC", congViecMoi)
             }
             startActivity(intent)
         }
+
+
     }
 }
