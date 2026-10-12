@@ -16,6 +16,8 @@ class ChiTietCongViecActivity : AppCompatActivity() {
             val data = result.data
             tenHienTai = data?.getStringExtra("TEN_MOI")
             moTaHienTai = data?.getStringExtra("MO_TA_MOI")
+            binding.tvChiTietTen.text = "Tên công việc: $tenHienTai"
+            binding.tvChiTietMoTa.text = "Mô tả: $moTaHienTai"
         }
     }
 
