@@ -14,5 +14,14 @@ class ChinhSuaCongViecActivity : AppCompatActivity() {
 
         binding.edtTenSua.setText(intent.getStringExtra("TEN_CONG_VIEC"))
         binding.edtMoTaSua.setText(intent.getStringExtra("MO_TA_CONG_VIEC"))
+
+        binding.btnLuu.setOnClickListener {
+            val intentResult = android.content.Intent().apply {
+                putExtra("TEN_MOI", binding.edtTenSua.text.toString())
+                putExtra("MO_TA_MOI", binding.edtMoTaSua.text.toString())
+            }
+            setResult(RESULT_OK, intentResult)
+            finish()
+        }
     }
 }
