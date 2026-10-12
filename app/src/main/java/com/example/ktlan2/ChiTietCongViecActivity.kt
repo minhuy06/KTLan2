@@ -27,15 +27,22 @@ class ChiTietCongViecActivity : AppCompatActivity() {
         binding = ActivityChiTietCongViecBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        congViecHienTai = intent.getParcelableExtra<CongViec>("OBJ_CONG_VIEC")
+        congViecHienTai = intent.getSerializableExtra("KEY_CONG_VIEC") as? CongViec
 
-        // Hiển thị thông tin
         binding.tvChiTietTen.text = congViecHienTai?.layThongTin()
         binding.tvChiTietMoTa.text = ""
 
+        binding.chkHoanThanh.isChecked = congViecHienTai?.trangThai ?: false
+
+        binding.chkHoanThanh.setOnCheckedChangeListener { _, isChecked ->
+            congViecHienTai?.trangThai = isChecked
+
+            binding.tvChiTietTen.text = congViecHienTai?.layThongTin()
+        }
+
         binding.btnChinhSua.setOnClickListener {
             val intent = android.content.Intent(this, ChinhSuaCongViecActivity::class.java).apply {
-                putExtra("OBJ_CONG_VIEC", congViecHienTai)
+                putExtra("KEY_CONG_VIEC", congViecHienTai)
             }
             moChinhSuaLauncher.launch(intent)
         }
