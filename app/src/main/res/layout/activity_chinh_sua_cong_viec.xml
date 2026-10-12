@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/edtTenSua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Sửa tên công việc" />
+
+    <EditText
+        android:id="@+id/edtMoTaSua"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Sửa mô tả công việc"
+        android:lines="3"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="16dp"/>
+
+    <Button
+        android:id="@+id/btnLuu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lưu" />
+</LinearLayout>
